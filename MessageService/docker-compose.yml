@@ -1,0 +1,19 @@
+services:
+  message-service:
+    image: message-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:4000"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: gG3P295L
+      POSTGRES_DB: messagedb
+    ports:
+      - "5432:5432"
